@@ -1,5 +1,6 @@
 import React from 'react';
-import { Compass, Layers, Search, Settings, Grid, Award, Activity } from 'lucide-react';
+import brand from '../brand.json';
+import { Atom, Compass, Search, Grid, Award, Activity } from 'lucide-react';
 
 interface TopNavProps {
   activeTab: 'inspect' | 'matrix' | 'heatmaps' | 'quiz';
@@ -13,13 +14,13 @@ export function TopNav({ activeTab, setActiveTab, onOpenDrawer }: TopNavProps) {
       {/* Brand & Symbol */}
       <div className="flex items-center gap-3">
         <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center border border-white/20 shadow-lg shadow-sky-500/30">
-          <Compass size={22} className="text-white animate-spin-slow" />
+          <Atom size={22} className="text-white animate-spin-slow" />
         </div>
         <div>
           <h1 className="text-base font-bold text-white tracking-wider font-sans leading-none">
-            AETHER <span className="text-sky-400 font-light">ELEMENT</span>
+            {brand.name}
           </h1>
-          <p className="text-[10px] text-slate-400 tracking-widest uppercase mt-0.5">Quantum Celestial Edition</p>
+          <p className="text-[10px] text-slate-400 tracking-widest uppercase mt-0.5">{brand.tagline}</p>
         </div>
       </div>
 
@@ -46,7 +47,7 @@ export function TopNav({ activeTab, setActiveTab, onOpenDrawer }: TopNavProps) {
           }`}
         >
           <Grid size={18} />
-          <span className="hidden md:inline">Matrix 118</span>
+          <span className="hidden md:inline">Elements</span>
         </button>
 
         <button

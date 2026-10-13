@@ -1,0 +1,15 @@
+# Elemental
+
+> Explore chemical elements with interactive 3D atom models, electron configurations, periodic property heatmaps and quizzes in Elemental.
+
+The current dataset contains 23 selected elements, not detailed coverage of all 118. Bohr-style rings are simplified teaching diagrams, not literal electron paths or quantum simulations. Atomic-property values are educational reference data; use authoritative scientific sources for precision work. The app is an interactive web experience that requires JavaScript; 3D rendering also needs WebGL support.
+
+## Product
+
+- [Product overview](https://elemental-psi.vercel.app/about.html): Features, scope, reference links and privacy.
+- [Plain-text overview](https://elemental-psi.vercel.app/about.md): Public product documentation.
+- [Open the app](https://elemental-psi.vercel.app/): Interactive app; requires JavaScript.
+
+## Optional
+
+- [Full public context](https://elemental-psi.vercel.app/llms-full.txt): Complete public product overview.

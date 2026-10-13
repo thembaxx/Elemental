@@ -1,24 +1,29 @@
 {
   "expo": {
-    "name": "app",
+    "name": "Elemental",
     "slug": "app",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./public/brand-icon.png",
     "userInterfaceStyle": "light",
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/android-icon-foreground.png",
-        "backgroundImage": "./assets/android-icon-background.png",
-        "monochromeImage": "./assets/android-icon-monochrome.png"
+        "backgroundColor": "#141d44",
+        "foregroundImage": "./public/brand-foreground.png",
+        "monochromeImage": "./public/brand-monochrome.png"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
-    }
+      "favicon": "./public/brand-icon.png",
+      "name": "Elemental \u2014 Interactive periodic table & 3D atoms",
+      "shortName": "Elemental",
+      "description": "Explore chemical elements with interactive 3D atom models, electron configurations, periodic property heatmaps and quizzes in Elemental.",
+      "lang": "en",
+      "themeColor": "#141d44"
+    },
+    "description": "Explore chemical elements with interactive 3D atom models, electron configurations, periodic property heatmaps and quizzes in Elemental."
   }
 }

@@ -1,5 +1,5 @@
 {
-  "name": "app",
+  "name": "elemental",
   "version": "1.0.0",
   "main": "index.js",
   "dependencies": {
@@ -29,7 +29,16 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "build": "npx expo export -p web"
+    "build": "npx expo export -p web",
+    "discovery": "node scripts/discovery.mjs",
+    "prebuild": "npm run discovery",
+    "lint": "expo lint",
+    "typecheck": "tsc --noEmit"
   },
-  "private": true
+  "private": true,
+  "devDependencies": {
+    "eslint": "^9.39.5",
+    "eslint-config-expo": "~57.0.2",
+    "typescript": "~6.0.3"
+  }
 }
