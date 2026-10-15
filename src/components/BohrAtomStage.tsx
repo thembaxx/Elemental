@@ -22,7 +22,7 @@ function Nucleus({ element }: { element: ElementData }) {
       const y = 1 - (i / (total - 1 || 1)) * 2;
       const radiusAtY = Math.sqrt(1 - y * y);
       const theta = phi * i;
-      const r = 0.45 + Math.random() * 0.1;
+      const r = 0.45 + (i % 7) / 60;
       const x = Math.cos(theta) * radiusAtY * r;
       const z = Math.sin(theta) * radiusAtY * r;
       points.push({

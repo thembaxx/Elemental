@@ -80,6 +80,10 @@ export default function App() {
         )}
       </main>
 
+      <footer className="px-4 py-4 text-center text-xs text-slate-300">
+        <a href="/about.html" className="underline">About Elemental & model limits</a>
+      </footer>
+
       {/* Full Periodic Table Drawer Sheet Modal */}
       <PeriodicDrawerSheet
         isOpen={isDrawerOpen}

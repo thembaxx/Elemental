@@ -62,9 +62,9 @@ export function PeriodicDrawerSheet({
         <div className="px-6 pb-4 flex items-center justify-between border-b border-white/10 bg-[#0c1328]">
           <div>
             <h2 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
-              <Sparkles size={20} className="text-sky-400" /> Periodic Matrix • 118
+              <Sparkles size={20} className="text-sky-400" /> Periodic Matrix • {PERIODIC_ELEMENTS.length}
             </h2>
-            <p className="text-xs text-slate-300 mt-0.5">Select any chemical element to inspect in 3D</p>
+            <p className="text-xs text-slate-300 mt-0.5">Choose an element to inspect in 3D</p>
           </div>
 
           <button
