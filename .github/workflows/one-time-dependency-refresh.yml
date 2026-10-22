@@ -16,6 +16,7 @@ jobs:
           node-version: 24
       - run: |
           npx --yes npm-check-updates@23.1.1 -u --target latest
+          npm install --ignore-scripts --no-audit --no-fund
           CI=1 npx expo install --fix --npm
           npm install --package-lock-only --ignore-scripts --no-audit --no-fund
           npm ci --ignore-scripts --no-audit --no-fund
