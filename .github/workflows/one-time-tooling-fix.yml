@@ -1,0 +1,30 @@
+name: One-time tooling compatibility repair
+on:
+  push:
+    branches:
+      - chore/deps-latest-stable-20261022
+permissions:
+  contents: write
+jobs:
+  repair:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
+        with:
+          node-version: 24
+      - name: Restore supported tooling with locked dependencies
+        run: |
+          npm install --save-dev 'eslint@^9.39.5' --ignore-scripts --no-audit --no-fund
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: Commit and remove temporary workflow
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git rm .github/workflows/one-time-tooling-fix.yml
+          git add package.json package-lock.json
+          if ! git diff --cached --quiet; then
+            git commit -m 'fix(tooling): use versions supported by lint plugins'
+            git push
+          fi
