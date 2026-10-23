@@ -1,5 +1,5 @@
-import React from 'react';
-import { ElementData } from '../data/elements';
+import React from "react";
+import { ElementData } from "../data/elements";
 
 interface DynamicGlowContainerProps {
   element: ElementData;
@@ -7,9 +7,15 @@ interface DynamicGlowContainerProps {
   className?: string;
 }
 
-export function DynamicGlowContainer({ element, children, className = '' }: DynamicGlowContainerProps) {
+export function DynamicGlowContainer({
+  element,
+  children,
+  className = "",
+}: DynamicGlowContainerProps) {
   return (
-    <div className={`relative rounded-[32px] p-[1.5px] transition-all duration-700 ease-out ${className}`}>
+    <div
+      className={`relative rounded-[32px] p-[1.5px] transition-all duration-700 ease-out ${className}`}
+    >
       {/* Outer Glow Aura */}
       <div
         className="absolute -inset-1.5 rounded-[36px] blur-xl opacity-40 transition-all duration-700 pointer-events-none"

@@ -1,20 +1,20 @@
-import React, { useState } from 'react';
-import { PERIODIC_ELEMENTS, ElementData } from './src/data/elements';
-import { TopNav } from './src/components/TopNav';
-import { DynamicGlowContainer } from './src/components/DynamicGlowContainer';
-import { BohrAtomStage } from './src/components/BohrAtomStage';
-import { CameraHud } from './src/components/CameraHud';
-import { EmpiricalInspector } from './src/components/EmpiricalInspector';
-import { SequenceScrubber } from './src/components/SequenceScrubber';
-import { PeriodicDrawerSheet } from './src/components/PeriodicDrawerSheet';
-import { PropertyHeatmaps } from './src/components/PropertyHeatmaps';
-import { QuantumQuiz } from './src/components/QuantumQuiz';
+import React, { useState } from "react";
+import { PERIODIC_ELEMENTS, ElementData } from "./src/data/elements";
+import { TopNav } from "./src/components/TopNav";
+import { DynamicGlowContainer } from "./src/components/DynamicGlowContainer";
+import { BohrAtomStage } from "./src/components/BohrAtomStage";
+import { CameraHud } from "./src/components/CameraHud";
+import { EmpiricalInspector } from "./src/components/EmpiricalInspector";
+import { SequenceScrubber } from "./src/components/SequenceScrubber";
+import { PeriodicDrawerSheet } from "./src/components/PeriodicDrawerSheet";
+import { PropertyHeatmaps } from "./src/components/PropertyHeatmaps";
+import { QuantumQuiz } from "./src/components/QuantumQuiz";
 
 export default function App() {
   const [selectedElement, setSelectedElement] = useState<ElementData>(
-    PERIODIC_ELEMENTS.find((e) => e.symbol === 'O') || PERIODIC_ELEMENTS[0]
+    PERIODIC_ELEMENTS.find((e) => e.symbol === "O") || PERIODIC_ELEMENTS[0],
   );
-  const [activeTab, setActiveTab] = useState<'inspect' | 'matrix' | 'heatmaps' | 'quiz'>('inspect');
+  const [activeTab, setActiveTab] = useState<"inspect" | "matrix" | "heatmaps" | "quiz">("inspect");
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [autoRotate, setAutoRotate] = useState(true);
   const [cameraKey, setCameraKey] = useState(0);
@@ -39,7 +39,7 @@ export default function App() {
 
       {/* Main Workspace Area */}
       <main className="flex-1 w-full max-w-7xl mx-auto px-4 py-2 flex flex-col z-10">
-        {activeTab === 'inspect' && (
+        {activeTab === "inspect" && (
           <DynamicGlowContainer element={selectedElement} className="flex-1">
             {/* 12-Column Responsive Desktop & Mobile Split Layout */}
             <div className="grid grid-cols-1 lg:grid-cols-12 flex-1 h-full min-h-[550px]">
@@ -67,13 +67,13 @@ export default function App() {
           </DynamicGlowContainer>
         )}
 
-        {activeTab === 'heatmaps' && (
+        {activeTab === "heatmaps" && (
           <div className="flex-1 bg-slate-950/60 backdrop-blur-2xl border border-white/10 rounded-[32px] overflow-hidden">
             <PropertyHeatmaps />
           </div>
         )}
 
-        {activeTab === 'quiz' && (
+        {activeTab === "quiz" && (
           <div className="flex-1 bg-slate-950/60 backdrop-blur-2xl border border-white/10 rounded-[32px] overflow-hidden py-8">
             <QuantumQuiz />
           </div>
@@ -81,7 +81,9 @@ export default function App() {
       </main>
 
       <footer className="px-4 py-4 text-center text-xs text-slate-300">
-        <a href="/about.html" className="underline">About Elemental & model limits</a>
+        <a href="/about.html" className="underline">
+          About Elemental & model limits
+        </a>
       </footer>
 
       {/* Full Periodic Table Drawer Sheet Modal */}
@@ -91,7 +93,7 @@ export default function App() {
         selectedElement={selectedElement}
         onSelectElement={(elem) => {
           setSelectedElement(elem);
-          setActiveTab('inspect');
+          setActiveTab("inspect");
         }}
       />
     </div>

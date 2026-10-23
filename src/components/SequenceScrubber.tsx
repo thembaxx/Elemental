@@ -1,5 +1,5 @@
-import React from 'react';
-import { ElementData, PERIODIC_ELEMENTS } from '../data/elements';
+import React from "react";
+import { ElementData, PERIODIC_ELEMENTS } from "../data/elements";
 
 interface SequenceScrubberProps {
   selectedElement: ElementData;
@@ -11,10 +11,12 @@ export function SequenceScrubber({ selectedElement, onSelectElement }: SequenceS
     <div className="w-full bg-slate-950/60 backdrop-blur-2xl border-t border-white/10 p-3 flex flex-col gap-2">
       <div className="flex items-center justify-between px-2 text-xs">
         <span className="font-semibold text-slate-300 tracking-wider text-[11px] uppercase flex items-center gap-1.5">
-          <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" /> Cosmic Sequence Scrubber (1 - 118)
+          <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" /> Cosmic Sequence
+          Scrubber (1 - 118)
         </span>
         <span className="text-[11px] text-slate-400 font-mono">
-          Focused: <strong className="text-white">{selectedElement.name}</strong> ({selectedElement.symbol})
+          Focused: <strong className="text-white">{selectedElement.name}</strong> (
+          {selectedElement.symbol})
         </span>
       </div>
 
@@ -28,8 +30,8 @@ export function SequenceScrubber({ selectedElement, onSelectElement }: SequenceS
               onClick={() => onSelectElement(elem)}
               className={`flex-shrink-0 group relative flex flex-col items-center justify-center w-14 h-14 rounded-2xl transition-all duration-300 transform ${
                 isSelected
-                  ? 'scale-110 -translate-y-1 z-10'
-                  : 'hover:scale-105 hover:-translate-y-0.5 opacity-80 hover:opacity-100'
+                  ? "scale-110 -translate-y-1 z-10"
+                  : "hover:scale-105 hover:-translate-y-0.5 opacity-80 hover:opacity-100"
               }`}
             >
               {/* Outer Glow Halo for Selected */}
@@ -47,12 +49,16 @@ export function SequenceScrubber({ selectedElement, onSelectElement }: SequenceS
                   background: isSelected
                     ? `radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.4), ${elem.glowColor.primary} 70%, rgba(15, 23, 42, 0.95))`
                     : `radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.15), rgba(30, 41, 59, 0.9))`,
-                  borderColor: isSelected ? elem.glowColor.primary : 'rgba(255, 255, 255, 0.15)',
-                  boxShadow: isSelected ? `0 6px 20px -3px ${elem.glowColor.glow}` : 'none',
+                  borderColor: isSelected ? elem.glowColor.primary : "rgba(255, 255, 255, 0.15)",
+                  boxShadow: isSelected ? `0 6px 20px -3px ${elem.glowColor.glow}` : "none",
                 }}
               >
-                <span className="text-[9px] font-bold text-white/70 leading-none">{elem.number}</span>
-                <span className="text-sm font-black text-white leading-tight drop-shadow">{elem.symbol}</span>
+                <span className="text-[9px] font-bold text-white/70 leading-none">
+                  {elem.number}
+                </span>
+                <span className="text-sm font-black text-white leading-tight drop-shadow">
+                  {elem.symbol}
+                </span>
               </div>
             </button>
           );

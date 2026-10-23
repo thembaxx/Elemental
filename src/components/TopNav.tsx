@@ -1,10 +1,10 @@
-import React from 'react';
-import brand from '../brand.json';
-import { Atom, Compass, Search, Grid, Award, Activity } from 'lucide-react';
+import React from "react";
+import brand from "../brand.json";
+import { Atom, Compass, Search, Grid, Award, Activity } from "lucide-react";
 
 interface TopNavProps {
-  activeTab: 'inspect' | 'matrix' | 'heatmaps' | 'quiz';
-  setActiveTab: (tab: 'inspect' | 'matrix' | 'heatmaps' | 'quiz') => void;
+  activeTab: "inspect" | "matrix" | "heatmaps" | "quiz";
+  setActiveTab: (tab: "inspect" | "matrix" | "heatmaps" | "quiz") => void;
   onOpenDrawer: () => void;
 }
 
@@ -20,18 +20,20 @@ export function TopNav({ activeTab, setActiveTab, onOpenDrawer }: TopNavProps) {
           <h1 className="text-base font-bold text-white tracking-wider font-sans leading-none">
             {brand.name}
           </h1>
-          <p className="text-[10px] text-slate-400 tracking-widest uppercase mt-0.5">{brand.tagline}</p>
+          <p className="text-[10px] text-slate-400 tracking-widest uppercase mt-0.5">
+            {brand.tagline}
+          </p>
         </div>
       </div>
 
       {/* Center Navigation Pills */}
       <nav className="flex items-center gap-1.5 bg-white/5 p-1 rounded-full border border-white/10">
         <button
-          onClick={() => setActiveTab('inspect')}
+          onClick={() => setActiveTab("inspect")}
           className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold transition-all duration-300 ${
-            activeTab === 'inspect'
-              ? 'bg-gradient-to-r from-sky-500 to-indigo-600 text-white shadow-lg shadow-sky-500/25 border border-white/20'
-              : 'text-slate-400 hover:text-white hover:bg-white/5'
+            activeTab === "inspect"
+              ? "bg-gradient-to-r from-sky-500 to-indigo-600 text-white shadow-lg shadow-sky-500/25 border border-white/20"
+              : "text-slate-400 hover:text-white hover:bg-white/5"
           }`}
         >
           <Compass size={18} />
@@ -41,9 +43,9 @@ export function TopNav({ activeTab, setActiveTab, onOpenDrawer }: TopNavProps) {
         <button
           onClick={onOpenDrawer}
           className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold transition-all duration-300 ${
-            activeTab === 'matrix'
-              ? 'bg-gradient-to-r from-sky-500 to-indigo-600 text-white shadow-lg shadow-sky-500/25 border border-white/20'
-              : 'text-slate-400 hover:text-white hover:bg-white/5'
+            activeTab === "matrix"
+              ? "bg-gradient-to-r from-sky-500 to-indigo-600 text-white shadow-lg shadow-sky-500/25 border border-white/20"
+              : "text-slate-400 hover:text-white hover:bg-white/5"
           }`}
         >
           <Grid size={18} />
@@ -51,11 +53,11 @@ export function TopNav({ activeTab, setActiveTab, onOpenDrawer }: TopNavProps) {
         </button>
 
         <button
-          onClick={() => setActiveTab('heatmaps')}
+          onClick={() => setActiveTab("heatmaps")}
           className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold transition-all duration-300 ${
-            activeTab === 'heatmaps'
-              ? 'bg-gradient-to-r from-sky-500 to-indigo-600 text-white shadow-lg shadow-sky-500/25 border border-white/20'
-              : 'text-slate-400 hover:text-white hover:bg-white/5'
+            activeTab === "heatmaps"
+              ? "bg-gradient-to-r from-sky-500 to-indigo-600 text-white shadow-lg shadow-sky-500/25 border border-white/20"
+              : "text-slate-400 hover:text-white hover:bg-white/5"
           }`}
         >
           <Activity size={18} />
@@ -63,11 +65,11 @@ export function TopNav({ activeTab, setActiveTab, onOpenDrawer }: TopNavProps) {
         </button>
 
         <button
-          onClick={() => setActiveTab('quiz')}
+          onClick={() => setActiveTab("quiz")}
           className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold transition-all duration-300 ${
-            activeTab === 'quiz'
-              ? 'bg-gradient-to-r from-sky-500 to-indigo-600 text-white shadow-lg shadow-sky-500/25 border border-white/20'
-              : 'text-slate-400 hover:text-white hover:bg-white/5'
+            activeTab === "quiz"
+              ? "bg-gradient-to-r from-sky-500 to-indigo-600 text-white shadow-lg shadow-sky-500/25 border border-white/20"
+              : "text-slate-400 hover:text-white hover:bg-white/5"
           }`}
         >
           <Award size={18} />

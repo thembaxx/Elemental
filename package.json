@@ -1,7 +1,22 @@
 {
   "name": "elemental",
   "version": "1.0.0",
+  "private": true,
   "main": "index.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web",
+    "build": "npx expo export -p web",
+    "discovery": "node scripts/discovery.mjs",
+    "prebuild": "npm run discovery",
+    "lint": "oxlint .",
+    "typecheck": "tsc --noEmit",
+    "lint:fix": "oxlint --fix .",
+    "format": "oxfmt --write .",
+    "format:check": "oxfmt --check ."
+  },
   "dependencies": {
     "@react-three/drei": "^10.7.9",
     "@react-three/fiber": "^9.8.2",
@@ -24,22 +39,10 @@
     "tailwindcss": "^4.3.3",
     "three": "^0.186.1"
   },
-  "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "web": "expo start --web",
-    "build": "npx expo export -p web",
-    "discovery": "node scripts/discovery.mjs",
-    "prebuild": "npm run discovery",
-    "lint": "expo lint",
-    "typecheck": "tsc --noEmit"
-  },
-  "private": true,
   "devDependencies": {
-    "@typescript-eslint/parser": "^8.72.0",
-    "eslint": "^9.39.5",
-    "eslint-config-expo": "~58.0.4",
-    "typescript": "~6.0.3"
+    "eslint-plugin-expo": "1.2.1",
+    "oxfmt": "0.74.0",
+    "oxlint": "1.89.0",
+    "typescript": "7.0.2"
   }
 }

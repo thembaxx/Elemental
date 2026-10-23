@@ -1,6 +1,6 @@
-import React from 'react';
-import { ElementData } from '../data/elements';
-import { Atom, Scale, Zap, Radio, Shield, Thermometer } from 'lucide-react';
+import React from "react";
+import { ElementData } from "../data/elements";
+import { Atom, Scale, Zap, Radio, Shield, Thermometer } from "lucide-react";
 
 interface EmpiricalInspectorProps {
   element: ElementData;
@@ -26,16 +26,14 @@ export function EmpiricalInspector({ element }: EmpiricalInspectorProps) {
               style={{
                 borderColor: element.glowColor.border,
                 color: element.glowColor.primary,
-                backgroundColor: 'rgba(255, 255, 255, 0.05)',
+                backgroundColor: "rgba(255, 255, 255, 0.05)",
               }}
             >
               {element.category}
             </span>
           </div>
 
-          <h2 className="text-3xl font-extrabold tracking-tight text-white mt-1">
-            {element.name}
-          </h2>
+          <h2 className="text-3xl font-extrabold tracking-tight text-white mt-1">{element.name}</h2>
           <p className="text-xs text-slate-400 italic mt-0.5">{element.latinName}</p>
         </div>
 
@@ -49,7 +47,9 @@ export function EmpiricalInspector({ element }: EmpiricalInspectorProps) {
           }}
         >
           <span className="text-xs font-bold text-white/70 tracking-widest">{element.number}</span>
-          <span className="text-2xl font-black text-white leading-none drop-shadow-md">{element.symbol}</span>
+          <span className="text-2xl font-black text-white leading-none drop-shadow-md">
+            {element.symbol}
+          </span>
         </div>
       </div>
 
@@ -61,8 +61,12 @@ export function EmpiricalInspector({ element }: EmpiricalInspectorProps) {
             <Scale size={22} />
           </div>
           <div>
-            <p className="text-[10px] uppercase font-bold tracking-wider text-slate-400">Atomic Mass</p>
-            <p className="text-sm font-bold text-white">{element.atomicMass} <span className="text-[10px] text-slate-400 font-normal">u</span></p>
+            <p className="text-[10px] uppercase font-bold tracking-wider text-slate-400">
+              Atomic Mass
+            </p>
+            <p className="text-sm font-bold text-white">
+              {element.atomicMass} <span className="text-[10px] text-slate-400 font-normal">u</span>
+            </p>
           </div>
         </div>
 
@@ -72,8 +76,12 @@ export function EmpiricalInspector({ element }: EmpiricalInspectorProps) {
             <Zap size={22} />
           </div>
           <div>
-            <p className="text-[10px] uppercase font-bold tracking-wider text-slate-400">Electronegativity</p>
-            <p className="text-sm font-bold text-white">{element.electronegativity ? `${element.electronegativity} Pauling` : 'N/A'}</p>
+            <p className="text-[10px] uppercase font-bold tracking-wider text-slate-400">
+              Electronegativity
+            </p>
+            <p className="text-sm font-bold text-white">
+              {element.electronegativity ? `${element.electronegativity} Pauling` : "N/A"}
+            </p>
           </div>
         </div>
 
@@ -83,8 +91,12 @@ export function EmpiricalInspector({ element }: EmpiricalInspectorProps) {
             <Radio size={22} />
           </div>
           <div>
-            <p className="text-[10px] uppercase font-bold tracking-wider text-slate-400">Atomic Radius</p>
-            <p className="text-sm font-bold text-white">{element.radiusPm} <span className="text-[10px] text-slate-400 font-normal">pm</span></p>
+            <p className="text-[10px] uppercase font-bold tracking-wider text-slate-400">
+              Atomic Radius
+            </p>
+            <p className="text-sm font-bold text-white">
+              {element.radiusPm} <span className="text-[10px] text-slate-400 font-normal">pm</span>
+            </p>
           </div>
         </div>
 
@@ -94,8 +106,13 @@ export function EmpiricalInspector({ element }: EmpiricalInspectorProps) {
             <Thermometer size={22} />
           </div>
           <div>
-            <p className="text-[10px] uppercase font-bold tracking-wider text-slate-400">1st Ionization</p>
-            <p className="text-sm font-bold text-white">{element.ionizationEnergy} <span className="text-[10px] text-slate-400 font-normal">kJ/mol</span></p>
+            <p className="text-[10px] uppercase font-bold tracking-wider text-slate-400">
+              1st Ionization
+            </p>
+            <p className="text-sm font-bold text-white">
+              {element.ionizationEnergy}{" "}
+              <span className="text-[10px] text-slate-400 font-normal">kJ/mol</span>
+            </p>
           </div>
         </div>
       </div>
@@ -106,7 +123,9 @@ export function EmpiricalInspector({ element }: EmpiricalInspectorProps) {
           <span className="text-xs font-bold text-slate-300 flex items-center gap-1.5">
             <Atom size={16} className="text-sky-400" /> Electron Configuration
           </span>
-          <span className="text-[10px] text-slate-400 tracking-wide font-mono">{element.electronConfig}</span>
+          <span className="text-[10px] text-slate-400 tracking-wide font-mono">
+            {element.electronConfig}
+          </span>
         </div>
 
         {/* Shell Population Pills */}

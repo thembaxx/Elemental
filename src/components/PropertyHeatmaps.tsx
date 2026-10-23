@@ -1,28 +1,30 @@
-import React, { useState } from 'react';
-import { PERIODIC_ELEMENTS } from '../data/elements';
-import { Activity, Flame, Radio, Scale, Shield, ArrowUpRight } from 'lucide-react';
+import React, { useState } from "react";
+import { PERIODIC_ELEMENTS } from "../data/elements";
+import { Activity, Flame, Radio, Scale, Shield, ArrowUpRight } from "lucide-react";
 
 export function PropertyHeatmaps() {
-  const [metric, setMetric] = useState<'electronegativity' | 'radius' | 'ionization' | 'mass'>('electronegativity');
+  const [metric, setMetric] = useState<"electronegativity" | "radius" | "ionization" | "mass">(
+    "electronegativity",
+  );
 
   const getMetricValue = (elem: (typeof PERIODIC_ELEMENTS)[0]) => {
     switch (metric) {
-      case 'electronegativity':
+      case "electronegativity":
         return elem.electronegativity || 0;
-      case 'radius':
+      case "radius":
         return elem.radiusPm;
-      case 'ionization':
+      case "ionization":
         return elem.ionizationEnergy;
-      case 'mass':
+      case "mass":
         return elem.atomicMass;
     }
   };
 
   const getIntensityColor = (value: number) => {
     let max = 4.0;
-    if (metric === 'radius') max = 250;
-    if (metric === 'ionization') max = 2400;
-    if (metric === 'mass') max = 200;
+    if (metric === "radius") max = 250;
+    if (metric === "ionization") max = 2400;
+    if (metric === "mass") max = 200;
 
     const ratio = Math.min(Math.max(value / max, 0.1), 1.0);
     return `rgba(56, 189, 248, ${ratio})`;
@@ -44,41 +46,41 @@ export function PropertyHeatmaps() {
         {/* Metric Switcher Pills */}
         <div className="flex flex-wrap items-center gap-1.5 bg-slate-950/60 p-1.5 rounded-2xl border border-white/10">
           <button
-            onClick={() => setMetric('electronegativity')}
+            onClick={() => setMetric("electronegativity")}
             className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
-              metric === 'electronegativity'
-                ? 'bg-sky-500/20 text-sky-300 border border-sky-400/40 shadow-sm'
-                : 'text-slate-400 hover:text-white'
+              metric === "electronegativity"
+                ? "bg-sky-500/20 text-sky-300 border border-sky-400/40 shadow-sm"
+                : "text-slate-400 hover:text-white"
             }`}
           >
             Electronegativity
           </button>
           <button
-            onClick={() => setMetric('radius')}
+            onClick={() => setMetric("radius")}
             className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
-              metric === 'radius'
-                ? 'bg-sky-500/20 text-sky-300 border border-sky-400/40 shadow-sm'
-                : 'text-slate-400 hover:text-white'
+              metric === "radius"
+                ? "bg-sky-500/20 text-sky-300 border border-sky-400/40 shadow-sm"
+                : "text-slate-400 hover:text-white"
             }`}
           >
             Atomic Radius
           </button>
           <button
-            onClick={() => setMetric('ionization')}
+            onClick={() => setMetric("ionization")}
             className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
-              metric === 'ionization'
-                ? 'bg-sky-500/20 text-sky-300 border border-sky-400/40 shadow-sm'
-                : 'text-slate-400 hover:text-white'
+              metric === "ionization"
+                ? "bg-sky-500/20 text-sky-300 border border-sky-400/40 shadow-sm"
+                : "text-slate-400 hover:text-white"
             }`}
           >
             Ionization Potential
           </button>
           <button
-            onClick={() => setMetric('mass')}
+            onClick={() => setMetric("mass")}
             className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
-              metric === 'mass'
-                ? 'bg-sky-500/20 text-sky-300 border border-sky-400/40 shadow-sm'
-                : 'text-slate-400 hover:text-white'
+              metric === "mass"
+                ? "bg-sky-500/20 text-sky-300 border border-sky-400/40 shadow-sm"
+                : "text-slate-400 hover:text-white"
             }`}
           >
             Atomic Mass
@@ -112,7 +114,9 @@ export function PropertyHeatmaps() {
               </div>
 
               <div className="pt-2 border-t border-white/10 flex items-center justify-between">
-                <span className="text-[10px] text-slate-400 uppercase font-bold tracking-wider">{metric}</span>
+                <span className="text-[10px] text-slate-400 uppercase font-bold tracking-wider">
+                  {metric}
+                </span>
                 <span className="text-xs font-black text-sky-300">{val}</span>
               </div>
             </div>

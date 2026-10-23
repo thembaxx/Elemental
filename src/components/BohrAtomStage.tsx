@@ -1,8 +1,8 @@
-import React, { useRef, useMemo } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Stars } from '@react-three/drei';
-import * as THREE from 'three';
-import { ElementData } from '../data/elements';
+import React, { useRef, useMemo } from "react";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { OrbitControls, Stars } from "@react-three/drei";
+import * as THREE from "three";
+import { ElementData } from "../data/elements";
 
 interface BohrAtomProps {
   element: ElementData;
@@ -67,8 +67,8 @@ function Nucleus({ element }: { element: ElementData }) {
           <mesh key={idx} position={item.pos}>
             <sphereGeometry args={[0.22, 16, 16]} />
             <meshStandardMaterial
-              color={item.isProton ? element.glowColor.primary : '#e2e8f0'}
-              emissive={item.isProton ? element.glowColor.secondary : '#94a3b8'}
+              color={item.isProton ? element.glowColor.primary : "#e2e8f0"}
+              emissive={item.isProton ? element.glowColor.secondary : "#94a3b8"}
               emissiveIntensity={0.8}
               roughness={0.2}
               metalness={0.3}
@@ -173,10 +173,7 @@ export function BohrAtomStage({ element, autoRotate = true }: BohrAtomProps) {
 
   return (
     <div className="w-full h-full relative min-h-[350px]">
-      <Canvas
-        camera={{ position: [0, 2, 8.5], fov: 45 }}
-        gl={{ antialias: true, alpha: true }}
-      >
+      <Canvas camera={{ position: [0, 2, 8.5], fov: 45 }} gl={{ antialias: true, alpha: true }}>
         <ambientLight intensity={0.6} />
         <directionalLight position={[10, 10, 10]} intensity={1.2} color="#ffffff" />
         <pointLight position={[-10, -10, -10]} intensity={0.5} color={element.glowColor.primary} />
