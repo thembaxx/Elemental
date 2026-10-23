@@ -22,13 +22,7 @@
     "The app is an interactive web experience that requires JavaScript; 3D rendering also needs WebGL support."
   ],
   "sources": [
-    [
-      "IUPAC periodic table",
-      "https://iupac.org/what-we-do/periodic-table-of-elements/"
-    ],
-    [
-      "Royal Society of Chemistry periodic table",
-      "https://www.rsc.org/periodic-table"
-    ]
+    ["IUPAC periodic table", "https://iupac.org/what-we-do/periodic-table-of-elements/"],
+    ["Royal Society of Chemistry periodic table", "https://www.rsc.org/periodic-table"]
   ]
 }

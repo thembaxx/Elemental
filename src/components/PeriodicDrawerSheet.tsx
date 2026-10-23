@@ -1,6 +1,6 @@
-import React, { useState, useMemo } from 'react';
-import { ElementData, PERIODIC_ELEMENTS } from '../data/elements';
-import { X, Search, Sparkles, ChevronRight } from 'lucide-react';
+import React, { useState, useMemo } from "react";
+import { ElementData, PERIODIC_ELEMENTS } from "../data/elements";
+import { X, Search, Sparkles, ChevronRight } from "lucide-react";
 
 interface PeriodicDrawerSheetProps {
   isOpen: boolean;
@@ -10,15 +10,15 @@ interface PeriodicDrawerSheetProps {
 }
 
 const CATEGORIES = [
-  'All',
-  'Nonmetal',
-  'Noble Gas',
-  'Alkali Metal',
-  'Alkaline Earth',
-  'Metalloid',
-  'Halogen',
-  'Transition Metal',
-  'Post-Transition Metal',
+  "All",
+  "Nonmetal",
+  "Noble Gas",
+  "Alkali Metal",
+  "Alkaline Earth",
+  "Metalloid",
+  "Halogen",
+  "Transition Metal",
+  "Post-Transition Metal",
 ] as const;
 
 export function PeriodicDrawerSheet({
@@ -27,8 +27,8 @@ export function PeriodicDrawerSheet({
   onSelectElement,
   selectedElement,
 }: PeriodicDrawerSheetProps) {
-  const [searchQuery, setSearchQuery] = useState('');
-  const [activeCategory, setActiveCategory] = useState<string>('All');
+  const [searchQuery, setSearchQuery] = useState("");
+  const [activeCategory, setActiveCategory] = useState<string>("All");
 
   const filteredElements = useMemo(() => {
     return PERIODIC_ELEMENTS.filter((elem) => {
@@ -37,8 +37,7 @@ export function PeriodicDrawerSheet({
         elem.symbol.toLowerCase().includes(searchQuery.toLowerCase()) ||
         elem.number.toString().includes(searchQuery);
 
-      const matchesCategory =
-        activeCategory === 'All' || elem.category === activeCategory;
+      const matchesCategory = activeCategory === "All" || elem.category === activeCategory;
 
       return matchesSearch && matchesCategory;
     });
@@ -62,7 +61,8 @@ export function PeriodicDrawerSheet({
         <div className="px-6 pb-4 flex items-center justify-between border-b border-white/10 bg-[#0c1328]">
           <div>
             <h2 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
-              <Sparkles size={20} className="text-sky-400" /> Periodic Matrix • {PERIODIC_ELEMENTS.length}
+              <Sparkles size={20} className="text-sky-400" /> Periodic Matrix •{" "}
+              {PERIODIC_ELEMENTS.length}
             </h2>
             <p className="text-xs text-slate-300 mt-0.5">Choose an element to inspect in 3D</p>
           </div>
@@ -79,7 +79,10 @@ export function PeriodicDrawerSheet({
         <div className="p-6 pb-3 space-y-3 bg-[#111a36]">
           {/* Search Bar */}
           <div className="relative w-full">
-            <Search size={18} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
+            <Search
+              size={18}
+              className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"
+            />
             <input
               type="text"
               placeholder="Search by name, symbol, or atomic number..."
@@ -97,8 +100,8 @@ export function PeriodicDrawerSheet({
                 onClick={() => setActiveCategory(cat)}
                 className={`px-3 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all duration-200 border ${
                   activeCategory === cat
-                    ? 'bg-sky-500/30 border-sky-400 text-sky-200 shadow-sm shadow-sky-500/30'
-                    : 'bg-white/5 border-white/10 text-slate-300 hover:text-white hover:bg-white/10'
+                    ? "bg-sky-500/30 border-sky-400 text-sky-200 shadow-sm shadow-sky-500/30"
+                    : "bg-white/5 border-white/10 text-slate-300 hover:text-white hover:bg-white/10"
                 }`}
               >
                 {cat}
@@ -120,8 +123,8 @@ export function PeriodicDrawerSheet({
                 }}
                 className={`p-3.5 rounded-2xl border text-left flex flex-col justify-between transition-all duration-300 relative group overflow-hidden ${
                   isSelected
-                    ? 'bg-sky-500/30 border-sky-400 shadow-xl shadow-sky-500/30 scale-[1.02]'
-                    : 'bg-[#162044] hover:bg-[#1e2a57] border-white/10 hover:border-white/20'
+                    ? "bg-sky-500/30 border-sky-400 shadow-xl shadow-sky-500/30 scale-[1.02]"
+                    : "bg-[#162044] hover:bg-[#1e2a57] border-white/10 hover:border-white/20"
                 }`}
               >
                 {/* Glow Backdrop Accent */}
@@ -131,7 +134,9 @@ export function PeriodicDrawerSheet({
                 />
 
                 <div className="flex items-center justify-between w-full">
-                  <span className="text-[10px] font-mono text-slate-400 font-bold">{elem.number}</span>
+                  <span className="text-[10px] font-mono text-slate-400 font-bold">
+                    {elem.number}
+                  </span>
                   <span className="text-[9px] px-1.5 py-0.5 rounded-full bg-white/10 text-slate-200">
                     {elem.state}
                   </span>
@@ -162,14 +167,16 @@ export function PeriodicDrawerSheet({
             <div
               className="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-white border"
               style={{
-                backgroundColor: 'rgba(255,255,255,0.08)',
+                backgroundColor: "rgba(255,255,255,0.08)",
                 borderColor: selectedElement.glowColor.border,
               }}
             >
               {selectedElement.symbol}
             </div>
             <div>
-              <p className="text-xs font-bold text-white">{selectedElement.name} (Z={selectedElement.number})</p>
+              <p className="text-xs font-bold text-white">
+                {selectedElement.name} (Z={selectedElement.number})
+              </p>
               <p className="text-[10px] text-slate-400">Config: {selectedElement.electronConfig}</p>
             </div>
           </div>
