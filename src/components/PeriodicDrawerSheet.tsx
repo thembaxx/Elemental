@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect, useId, useRef } from "react";
 import { ElementData, PERIODIC_ELEMENTS } from "../data/elements";
 import { X, Search, Sparkles, ChevronRight } from "lucide-react";
 
@@ -27,6 +27,25 @@ export function PeriodicDrawerSheet({
   onSelectElement,
   selectedElement,
 }: PeriodicDrawerSheetProps) {
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const titleId = useId();
+
+  useEffect(() => {
+    if (!isOpen || !dialogRef.current) return;
+    const dialog = dialogRef.current;
+    const previousFocus = document.activeElement;
+    const previousOverflow = document.body.style.overflow;
+    dialog.showModal();
+    document.body.style.overflow = "hidden";
+    return () => {
+      dialog.close();
+      document.body.style.overflow = previousOverflow;
+      if (previousFocus instanceof HTMLElement && previousFocus.isConnected) {
+        previousFocus.focus({ preventScroll: true });
+      }
+    };
+  }, [isOpen]);
+
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<string>("All");
 
@@ -46,21 +65,40 @@ export function PeriodicDrawerSheet({
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col justify-end bg-black/75 backdrop-blur-md">
+    <dialog
+      ref={dialogRef}
+      aria-labelledby={titleId}
+      onCancel={(event) => {
+        event.preventDefault();
+        onClose();
+      }}
+      onClick={(event) => {
+        if (event.target === event.currentTarget) onClose();
+      }}
+      className="fixed inset-0 m-0 h-dvh max-h-none w-screen max-w-none border-0 p-0 flex flex-col justify-end bg-black/75 backdrop-blur-md [&::backdrop]:bg-transparent"
+    >
       {/* Backdrop Dismiss Area */}
-      <div className="flex-1 w-full" onClick={onClose} />
+      <div className="flex-1 w-full pointer-events-none" aria-hidden="true" />
 
       {/* Sheet Modal Container */}
-      <div className="w-full max-h-[85vh] bg-[#0c1328] border-t border-white/20 rounded-t-[36px] flex flex-col shadow-2xl overflow-hidden text-white">
+      <div className="w-full max-h-[85dvh] bg-[#0c1328] border-t border-white/20 rounded-t-[36px] flex flex-col shadow-2xl overflow-hidden text-white">
         {/* Tactile Drag Handle Pill */}
-        <div className="w-full flex justify-center py-3 cursor-pointer" onClick={onClose}>
+        <button
+          type="button"
+          aria-label="Dismiss periodic matrix"
+          className="w-full flex justify-center py-3"
+          onClick={onClose}
+        >
           <div className="w-12 h-1.5 bg-white/30 rounded-full hover:bg-white/50 transition-colors" />
-        </div>
+        </button>
 
         {/* Sheet Header */}
         <div className="px-6 pb-4 flex items-center justify-between border-b border-white/10 bg-[#0c1328]">
           <div>
-            <h2 className="text-xl font-bold text-white tracking-tight flex items-center gap-2">
+            <h2
+              id={titleId}
+              className="text-xl font-bold text-white tracking-tight flex items-center gap-2"
+            >
               <Sparkles size={20} className="text-sky-400" /> Periodic Matrix •{" "}
               {PERIODIC_ELEMENTS.length}
             </h2>
@@ -69,6 +107,7 @@ export function PeriodicDrawerSheet({
 
           <button
             onClick={onClose}
+            aria-label="Close periodic matrix"
             className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 border border-white/15 flex items-center justify-center text-white transition-colors"
           >
             <X size={18} />
@@ -85,6 +124,7 @@ export function PeriodicDrawerSheet({
             />
             <input
               type="text"
+              aria-label="Search elements"
               placeholder="Search by name, symbol, or atomic number..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
@@ -111,7 +151,7 @@ export function PeriodicDrawerSheet({
         </div>
 
         {/* Element Grid */}
-        <div className="flex-1 overflow-y-auto p-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 bg-[#0c1328]">
+        <div className="flex-1 overflow-y-auto min-h-0 p-6 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 bg-[#0c1328]">
           {filteredElements.map((elem) => {
             const isSelected = elem.number === selectedElement.number;
             return (
@@ -162,7 +202,7 @@ export function PeriodicDrawerSheet({
         </div>
 
         {/* Bottom Floating Quick Inspector Bar */}
-        <div className="p-4 bg-[#090e1f] border-t border-white/15 flex items-center justify-between">
+        <div className="p-4 pb-[max(1rem,env(safe-area-inset-bottom))] bg-[#090e1f] border-t border-white/15 flex flex-wrap gap-3 items-center justify-between">
           <div className="flex items-center gap-3">
             <div
               className="w-10 h-10 rounded-xl flex items-center justify-center font-bold text-white border"
@@ -177,7 +217,9 @@ export function PeriodicDrawerSheet({
               <p className="text-xs font-bold text-white">
                 {selectedElement.name} (Z={selectedElement.number})
               </p>
-              <p className="text-[10px] text-slate-400">Config: {selectedElement.electronConfig}</p>
+              <p className="text-[10px] text-slate-400 break-words">
+                Config: {selectedElement.electronConfig}
+              </p>
             </div>
           </div>
 
@@ -190,6 +232,6 @@ export function PeriodicDrawerSheet({
           </button>
         </div>
       </div>
-    </div>
+    </dialog>
   );
 }
