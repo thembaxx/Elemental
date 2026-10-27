@@ -1,6 +1,7 @@
 import React from "react";
 import { ElementData } from "../data/elements";
 import { Atom, Scale, Zap, Radio, Shield, Thermometer } from "lucide-react";
+import { ElementLesson } from "./ElementLesson";
 
 interface EmpiricalInspectorProps {
   element: ElementData;
@@ -146,6 +147,8 @@ export function EmpiricalInspector({ element }: EmpiricalInspectorProps) {
       <div className="bg-white/5 border border-white/10 p-4 rounded-2xl">
         <p className="text-xs leading-relaxed text-slate-300">{element.summary}</p>
       </div>
+
+      <ElementLesson element={element} />
     </div>
   );
 }
